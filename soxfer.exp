@@ -1,0 +1,52 @@
+#!/usr/bin/expect
+
+# Set long timeout before password is requested
+set timeout 20
+
+# Set variables based on passed arguments
+
+set i [open "/tmp/pcap.file"]
+set file [string trim [read $i]]
+
+if {[llength $argv] == 1} {
+set arg [lindex $argv 0]
+} elseif  {[llength $argv] == 0} {
+set arg $file
+} else {
+puts "Syntax: ./soxfer.exp <pcap name> or leave blank to use last used pcap name" 
+exit
+}
+
+set file [split $arg "_"]
+
+lassign $file so
+
+#puts $so
+#puts $arg
+
+# grab the password
+stty -echo
+send_user -- "Onion Password: "
+expect_user -re "(.*)\n"
+send_user "\n"
+stty echo
+set pass $expect_out(1,string)
+
+set timeout 1200
+
+# Open an scp download of the pcap that was created on SO 
+spawn bash -c "scp $so:/tmp/$arg /tmp/$arg"
+
+expect "assword:"
+
+send "$pass\r";
+
+expect "$"
+
+# Pause to make sure file was completely downloaded locally
+sleep 2
+
+# Launch Wireshark and open the downloaded file
+exec wireshark -r /tmp/$arg
+
+
