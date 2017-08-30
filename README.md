@@ -5,9 +5,9 @@ Sonion is a suite of scripts to pull pcaps based on date and time (or a date and
 
 The suite is made up of 3 scripts.  The most important is sonion.py.  It should just work without modification (it pulls local hostname using uname, so hostname needs to match the sensor directory specifed in "/nsm/sensor_data/hostname-eth1/dailylogs/".  This script defaults to eth1 for the monitoring port. If your sensor uses a different sensor port you would need to edit the sodir variable definition line.
 
-If the hostname and ethernet port are correct, create /opt/sonion/ directory and drop sonion.py in it. When creating the directory it only needs to allow execution and read. sonion.py also relies on tcpdump which should already be installed on any Security Onion sensor.
+If the hostname and ethernet port are correct, create /opt/sonion/ directory and drop sonion.py in it. When creating the directory it only needs to allow execution and read. sonion.py also relies on tcpdump which should already be installed on any Security Onion sensor. The only other file required in the /opt/sonion/ directory is empty.pcap which is basically an empty pcap file used as a stub for the pcap file that will be built by sonion.py.
 
-to run:
+To run sonion.py:
 
 /opt/sonion/sonion.py $date $time $filter $date2 $time2
 
