@@ -6,7 +6,7 @@ if [ -z "$1" ]
     echo -e "Options are currently: xxx, yyy, zzz"
     echo -e "\n"
     exit
-#check for 3 letter site code and assign so variable to correct IP    
+#check for 3 letter site code and assign so variable is assigned to correct hostname    
 elif [ "$1" == "xxx" ]
 then
     so="xxx.sensor.domain"
