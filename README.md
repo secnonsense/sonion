@@ -1,7 +1,7 @@
 # sonion
 Security Onion Packet Download scripts
 
-Sonion is a suite of scripts to pull pcaps based on date and time (or a date and time range) and a filter.  This way if you want to pull pcaps that are beyond the scope of an alert in Squert or a session in Elsa, you can cast a wider net.
+Sonion is a suite of scripts used to pull pcaps based on date and time (or a date and time range) and a filter from a Security Onion sensor.  This way if you want to pull pcaps that are beyond the scope of an alert in Squert or a session in Elsa, you can cast a wider net.
 
 The suite is made up of 3 scripts.  The most important is sonion.py.  It should just work without modification (it pulls local hostname using uname, so hostname needs to match the sensor directory specifed in "/nsm/sensor_data/hostname-eth1/dailylogs/".  This script defaults to eth1 for the monitoring port. If your sensor uses a different sensor port you would need to edit the sodir variable definition line.
 
