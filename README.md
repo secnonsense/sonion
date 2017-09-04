@@ -3,7 +3,7 @@ Security Onion Packet Download scripts
 
 Sonion is a suite of scripts used to pull pcaps based on date and time (or a date and time range) and a filter from a Security Onion sensor.  This way if you want to pull pcaps that are beyond the scope of an alert in Squert or a session in Elsa, you can cast a wider net.
 
-The suite is made up of 3 scripts.  The most important is sonion.py.  It should just work without modification (it pulls local hostname using uname, so hostname needs to match the sensor directory specifed in "/nsm/sensor_data/hostname-eth1/dailylogs/".  This script defaults to eth1 for the monitoring port. If your sensor uses a different sensor port you would need to edit the sodir variable definition line.
+The suite is made up of 3 scripts.  The most bulk of the work is done in sonion.py.  It should just work without modification (it pulls local hostname using uname, so hostname needs to match the sensor directory specifed in "/nsm/sensor_data/hostname-eth1/dailylogs/").  This script defaults to eth1 for the monitoring port. If your sensor uses a different sensor port you would need to edit the sodir variable definition line.
 
 If the hostname and ethernet port are correct, create /opt/sonion/ directory and drop sonion.py in it. When creating the directory it only needs to allow execution and read. sonion.py also relies on tcpdump which should already be installed on any Security Onion sensor. The only other file required in the /opt/sonion/ directory is empty.pcap which is basically an empty pcap file used as a stub for the pcap file that will be built by sonion.py.
 
@@ -55,7 +55,7 @@ then
     so="xxx.sensor.domain"
     echo -e "Sensor set to xxx"
     
-where xxx is an arbitrary 3 digit code and xxx.sensor.domain is the resolvable sensor name
+where xxx is an arbitrary 3 digit code and xxx.sensor.domain is the resolvable sensor name (NOTE - the resolvable hostname used here must also match the hostname of the sensor as retreived with uname, as well as the hostname used in the "/nsm/sensor_data/hostname-eth1/dailylogs/" directory for everything to work correctly).
 
 Upon running it will prompt for the following information:
 
