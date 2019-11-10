@@ -15,10 +15,10 @@ To run sonion.py:
 
 /opt/sonion/sonion.py $date $time $filter $date2 $time2
 
-$date = the date of the event or the start of the date range
-$time = the time of the event (UTC) or the start time of the range
-$date2 = the end of the date range - optional if not specifying a range
-$time2 = the end of the time range (UTC) - optional if not specifying a range
+$date = the date of the event or the start of the date range  
+$time = the time of the event (UTC) or the start time of the range  
+$date2 = the end of the date range - optional if not specifying a range  
+$time2 = the end of the time range (UTC) - optional if not specifying a range  
 
 Date and time format - YYYY-MM-DD HH:MM:SS  < the script is dumb and requires exactly this format.  Use zeroes to pad single digit values (example 2017-08-01 01:01:00)..  No values can be skipped.
 
@@ -50,21 +50,21 @@ The syntax is: ./sonion.sh <3 letter site code>
 
 Before using you will need to add your sensors' DNS resolvable hostnames to the predefined example sections:
 
-elif [ "$1" == "xxx" ]
-then
-    so="xxx.sensor.domain"
-    echo -e "Sensor set to xxx"
+elif [ "$1" == "xxx" ]  
+then  
+    so="xxx.sensor.domain"  
+    echo -e "Sensor set to xxx"  
     
 where xxx is an arbitrary 3 digit code and xxx.sensor.domain is the resolvable sensor name (NOTE - the resolvable hostname used here must also match the hostname of the sensor as retreived with uname, as well as the hostname used in the "/nsm/sensor_data/hostname-eth1/dailylogs/" directory for everything to work correctly).
 
 Upon running it will prompt for the following information:
 
-Enter Date in UTC [YYYY-MM-DD HH:MM:SS]: 2017-09-02 12:00:00
-Enter End Time and Date in UTC or press Enter  [YYYY-MM-DD HH:MM:SS]:
-Enter Source IP: 172.16.100.1
-Enter Source Port: 445
-Enter Destination IP:
-Enter Destination Port:
+Enter Date in UTC [YYYY-MM-DD HH:MM:SS]: 2017-09-02 12:00:00  
+Enter End Time and Date in UTC or press Enter  [YYYY-MM-DD HH:MM:SS]:  
+Enter Source IP: 172.16.100.1  
+Enter Source Port: 445  
+Enter Destination IP:   
+Enter Destination Port:   
 
 One date can be entered and the 5 sensor files closest to the time specified (before and after - assuming that many files exist on that date) will be filtered for the IP and port information specified.  At least one IP address should be specified, but adding as much information as possible is recommended in heavy traffic environments.  As noted previously since these items are used to construct a basic BPF, Source and Destination is arbitrary and doesn't matter.  There is no real directionality considered.
 
